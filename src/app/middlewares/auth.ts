@@ -22,8 +22,9 @@ const auth = (...requiredRoles: TUserRole[]) => {
         token,
         config.jwt_access_secret as string,
       ) as JwtPayload;
-    } catch (error) {
-      throw new AppError(httpStatus.UNAUTHORIZED, 'Unauthorized');
+      console.log('DECODED from auth.ts =>', decoded);
+    } catch (err) {
+      throw new AppError(httpStatus.UNAUTHORIZED, 'unauthorized');
     }
     // checking if the given token is valid
 
